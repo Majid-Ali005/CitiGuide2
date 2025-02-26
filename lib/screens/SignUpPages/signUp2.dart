@@ -39,6 +39,7 @@ class _SignUp2State extends State<SignUp2> {
     if (!isPwdValid) {
       return 'Password must be of 8 characters\n including digits and alphabets';
     }
+    return null;
   }
 
   //Login Successful msg
@@ -51,9 +52,9 @@ class _SignUp2State extends State<SignUp2> {
   }
 
   //TextField Controllers
-  final TextEditingController username = new TextEditingController();
-  final TextEditingController email = new TextEditingController();
-  final TextEditingController pwd = new TextEditingController();
+  final TextEditingController username = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController pwd = TextEditingController();
 
   //SignIn Function
   Future<void> signIn(String email, String pwd, String username) async {
@@ -70,8 +71,8 @@ class _SignUp2State extends State<SignUp2> {
         'id': credential.user!.uid,
         'username': username,
       });
-      final FirebaseStorage _storage = FirebaseStorage.instance;
-      Reference ref = _storage.ref().child('profile/${credential.user!.uid}');
+      final FirebaseStorage storage = FirebaseStorage.instance;
+      Reference ref = storage.ref().child('profile/${credential.user!.uid}');
       ByteData data =
           await rootBundle.load('assets/images/profileDefaultImg.jpg');
       Uint8List image = data.buffer.asUint8List();
@@ -270,7 +271,7 @@ class _SignUp2State extends State<SignUp2> {
               BlueButton(
                 topBottomPadding: Constants.searchBarButtonHeight,
                 leftRightPadding: 10,
-                widget_: Text(
+                widget_: const Text(
                   "Sign Up",
                   style: TextStyle(
                     color: Colors.black,
@@ -285,12 +286,12 @@ class _SignUp2State extends State<SignUp2> {
                   }
                 },
                 topBottomMargin: 0,
-                leftRightMargin: 0,
+                leftRightMargin: 0, onSelected: null,
               ),
               //bottom div
               const Spacer(),
               Container(
-                margin: EdgeInsets.only(top: 10, bottom: 20),
+                margin: const EdgeInsets.only(top: 10, bottom: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

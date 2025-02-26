@@ -110,7 +110,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                 print("tapped");
               },
               topBottomMargin: 0,
-              leftRightMargin: 0,
+              leftRightMargin: 0, onSelected: null,
             ),
             const SizedBox(
               height: 20,

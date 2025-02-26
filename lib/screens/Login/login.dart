@@ -37,6 +37,7 @@ class _LoginState extends State<Login> {
     if (!isPwdValid) {
       return 'Password must be of 8 characters\n including digits and alphabets';
     }
+    return null;
   }
 
   //Error validating
@@ -49,9 +50,9 @@ class _LoginState extends State<Login> {
   }
 
   //TextField Controllers
-  final TextEditingController username = new TextEditingController();
-  final TextEditingController email = new TextEditingController();
-  final TextEditingController pwd = new TextEditingController();
+  final TextEditingController username = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController pwd = TextEditingController();
 
 //Login
 
@@ -122,7 +123,7 @@ class _LoginState extends State<Login> {
     } catch (e) {
       // Handle other errors
       String errorToShow = 'User not found!!';
-      print("Erorrrrr is: ${e}");
+      print("Erorrrrr is: $e");
       showErrorMessage(errorToShow);
     }
   }
@@ -289,7 +290,7 @@ class _LoginState extends State<Login> {
               BlueButton(
                 topBottomPadding: Constants.searchBarButtonHeight,
                 leftRightPadding: 10,
-                widget_: Text(
+                widget_: const Text(
                   "Log in",
                   style: TextStyle(
                     color: Colors.black,
@@ -304,7 +305,7 @@ class _LoginState extends State<Login> {
                   }
                 },
                 topBottomMargin: 0,
-                leftRightMargin: 0,
+                leftRightMargin: 0, onSelected: null,
               ),
               const SizedBox(
                 height: 20,

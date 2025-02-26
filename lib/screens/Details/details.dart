@@ -23,7 +23,7 @@ class DestinationDetails extends StatelessWidget {
               .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
 
             if (snapshot.hasError) {
@@ -52,7 +52,7 @@ class DestinationDetails extends StatelessWidget {
                           firstOpacityDivRow: Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(top: 6, left: 10),
+                                padding: const EdgeInsets.only(top: 6, left: 10),
                                 child: TransparentButton(
                                     OpacitySet: 0.1,
                                     topBottomPadding: 2,
@@ -142,7 +142,7 @@ class DestinationDetails extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       child: Text(
                         data['description'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -174,7 +174,7 @@ class DestinationDetails extends StatelessWidget {
                               children: [
                                 Text(
                                   data['distance'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
@@ -209,7 +209,7 @@ class DestinationDetails extends StatelessWidget {
                               children: [
                                 Text(
                                   data['timings'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
@@ -246,7 +246,7 @@ class DestinationDetails extends StatelessWidget {
                           children: [
                             Text(
                               "         ${data['distance']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -272,19 +272,19 @@ class DestinationDetails extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(60),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(color: Colors.black12, blurRadius: 2)
                           ],
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(60),
                           child: Container(
+                            decoration: BoxDecoration(
+                              color: Constants.greyColor,
+                            ),
                             child: Image.asset(
                               'assets/images/map.png',
                               fit: BoxFit.cover,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Constants.greyColor,
                             ),
                           ),
                         ),
@@ -317,7 +317,7 @@ class DestinationDetails extends StatelessWidget {
                                       longitudeDetected: longitude, latitudeDetected: latitude)));
                         },
                         topBottomMargin: 10,
-                        leftRightMargin: 90)
+                        leftRightMargin: 90, onSelected: null,)
                   ],
                 ),
               ),

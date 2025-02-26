@@ -13,7 +13,7 @@ class BlueButton extends StatelessWidget {
     required this.topBottomPadding,
     required this.leftRightPadding,
     required this.widget_,
-    required this.OntapFunction, required this.topBottomMargin, required this.leftRightMargin,
+    required this.OntapFunction, required this.topBottomMargin, required this.leftRightMargin, required onSelected,
   });
 
   @override

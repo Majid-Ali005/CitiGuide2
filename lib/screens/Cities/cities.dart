@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, avoid_unnecessary_containers
+
 import 'package:citi_guide/Constants/constants.dart';
 import 'package:citi_guide/screens/CityDestinations/cityDestinations.dart';
 import 'package:citi_guide/screens/Dashboard/dashboard.dart';
@@ -112,7 +114,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
                       print("tapped");
                     },
                     topBottomMargin: 0,
-                    leftRightMargin: 0,
+                    leftRightMargin: 0, onSelected: null,
                   ),
                 ],
               ),
@@ -132,7 +134,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
                       GestureDetector(
                         onTap: () {
                           Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  CityDestinations(cityFetch: "Karachi")));
+                    MaterialPageRoute(builder: (context) =>  const CityDestinations(cityFetch: "Karachi")));
                         },
                         child: CityImgCard(
                             Widthcard: 150,
@@ -189,7 +191,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
                       GestureDetector(
                         onTap: () {
                            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  CityDestinations(cityFetch: "Lahore")));
+                    MaterialPageRoute(builder: (context) =>  const CityDestinations(cityFetch: "Lahore")));
                         },
                         child: CityImgCard(
                             Widthcard: 150,
@@ -249,7 +251,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
                       GestureDetector(
                         onTap: () {
                            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  CityDestinations(cityFetch: "Quetta")));
+                    MaterialPageRoute(builder: (context) => const CityDestinations(cityFetch: "Quetta")));
                         },
                         child: CityImgCard(
                             Widthcard: 150,
@@ -306,7 +308,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
                       GestureDetector(
                         onTap: () {
                            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  CityDestinations(cityFetch: "Peshawar")));
+                    MaterialPageRoute(builder: (context) =>  const CityDestinations(cityFetch: "Peshawar")));
                         },
                         child: CityImgCard(
                             Widthcard: 150,
@@ -377,7 +379,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
             width: 1.0, // Set your border width
           ),
           color: Constants.whiteColor,
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 25)],
+          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 25)],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -408,7 +410,7 @@ class _CitiesScreenState extends State<CitiesScreen> {
               }
             },
             gap: 8,
-            padding: EdgeInsets.all(11),
+            padding: const EdgeInsets.all(11),
             tabs: const [
               GButton(icon: Icons.home, text: "Home"),
               GButton(icon: Icons.language, text: "Cities"),

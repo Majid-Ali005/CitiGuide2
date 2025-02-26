@@ -11,7 +11,7 @@ class SecondSplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: 'assets/images/secondSplashScreenVector.png',
-      nextScreen: FifthSplashScreen(),
+      nextScreen: const FifthSplashScreen(),
       splashTransition: SplashTransition.scaleTransition,
       duration: 100,
          );

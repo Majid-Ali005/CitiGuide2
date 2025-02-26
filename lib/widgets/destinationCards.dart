@@ -1,5 +1,4 @@
 import 'package:citi_guide/Constants/constants.dart';
-import 'package:citi_guide/screens/Cities/cities.dart';
 import 'package:citi_guide/widgets/card.dart';
 import 'package:citi_guide/widgets/transparentButton.dart';
 import 'package:flutter/material.dart';

@@ -17,7 +17,7 @@ class _SignOutScreenState extends State<SignOutScreen> {
   SignOut(){
     FirebaseAuth.instance.signOut().then((value) => {
       print("Signed out"),
-      Navigator.push(context,MaterialPageRoute(builder: (context)=> SignUp2())),
+      Navigator.push(context,MaterialPageRoute(builder: (context)=> const SignUp2())),
     });
   }
   @override
@@ -78,7 +78,7 @@ class _SignOutScreenState extends State<SignOutScreen> {
                 SignOut();
               },
               topBottomMargin: 0,
-              leftRightMargin: 50,
+              leftRightMargin: 50, onSelected: null,
             ),
             const SizedBox(
               height: 20,

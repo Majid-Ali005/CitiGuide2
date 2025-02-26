@@ -29,7 +29,7 @@ class _FetchDataState extends State<FetchData> {
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
 
             if (snapshot.hasError) {
@@ -37,7 +37,7 @@ class _FetchDataState extends State<FetchData> {
             }
 
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Text('No data available');
+              return const Text('No data available');
             }
 
             var destinationData = snapshot.data!.docs;
@@ -55,7 +55,7 @@ class _FetchDataState extends State<FetchData> {
                   builder: (context, urlSnapshot) {
                     if (urlSnapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     }
 
                     if (urlSnapshot.hasError) {
@@ -66,7 +66,7 @@ class _FetchDataState extends State<FetchData> {
                     var url = urlSnapshot.data;
 
                     return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
@@ -80,7 +80,7 @@ class _FetchDataState extends State<FetchData> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => DestinationDetails(
-                                            destinationID: '${doc.id}',
+                                            destinationID: doc.id,
                                             url: '$url',
                                           )));
                             },
@@ -95,13 +95,13 @@ class _FetchDataState extends State<FetchData> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => DestinationDetails(
-                                            destinationID: '${doc.id}',
+                                            destinationID: doc.id,
                                             url: '$url',
                                           )));
                             },
                             child: Text(
                               doc['locationName'],
-                              style: TextStyle(fontWeight: FontWeight.w700),
+                              style: const TextStyle(fontWeight: FontWeight.w700),
                             )),
                         subtitle: Row(
                           children: [
@@ -119,7 +119,7 @@ class _FetchDataState extends State<FetchData> {
                             ),
                           ],
                         ),
-                        trailing: Container(
+                        trailing: SizedBox(
   width: 90, // Adjust the width based on your needs
   child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -152,7 +152,7 @@ class _FetchDataState extends State<FetchData> {
         });
       
         },
-        icon: Icon(Icons.delete),
+        icon: const Icon(Icons.delete),
       ),
       // IconButton(
       //   onPressed: () {},

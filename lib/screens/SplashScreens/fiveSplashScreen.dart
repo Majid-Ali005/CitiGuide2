@@ -14,15 +14,23 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
+  bool isDarkMode = false; // Track the theme state
 
   @override
   void initState() {
     super.initState();
 
+    // Detect system brightness initially
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        isDarkMode = Theme.of(context).brightness == Brightness.dark;
+      });
+    });
+
     // Create AnimationController
     _animationController = AnimationController(
-      vsync: this, // Pass 'this' since _FifthSplashScreenState mixes in TickerProviderStateMixin
-      duration: Duration(seconds: 1),
+      vsync: this,
+      duration: const Duration(seconds: 1),
     );
 
     // Create a curved animation
@@ -30,13 +38,13 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
         CurvedAnimation(parent: _animationController, curve: Curves.easeInOut);
 
     // Create a Tween to define the begin and end values for the animation
-    Tween<Offset> tween = Tween(begin: Offset(1.0, 0.0), end: Offset.zero);
+    Tween<Offset> tween = Tween(begin: const Offset(1.0, 0.0), end: Offset.zero);
 
     // Apply the tween and the curved animation to get the final animation
     _slideAnimation = tween.animate(curve);
 
     // Start the animation after 2 seconds
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       _animationController.forward();
     });
   }
@@ -44,6 +52,24 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white, // Dynamic background
+      appBar: AppBar(
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(
+              isDarkMode ? Icons.light_mode : Icons.dark_mode,
+              color: isDarkMode ? Colors.white : Colors.black,
+            ),
+            onPressed: () {
+              setState(() {
+                isDarkMode = !isDarkMode; // Toggle dark/light mode
+              });
+            },
+          ),
+        ],
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -52,37 +78,39 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
             style: TextStyle(
               fontSize: 50,
               fontWeight: FontWeight.bold,
+              color: isDarkMode ? Colors.white : Colors.black, // Dynamic text color
             ),
           ),
-          Text("Explore. Discover. Navigate – Your Smart City Guide!",
-           style: TextStyle(
+          Text(
+            "Explore. Discover. Navigate – Your Smart City Guide!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
               fontSize: 18,
-              
-            ),),
+              color: isDarkMode ? Colors.white70 : Colors.black87,
+            ),
+          ),
           Center(
             child: Image.asset(
               Constants.appLogo,
-              width: 250, // Set your desired width
-              height: 250, // Set your desired height
+              width: 250,
+              height: 250,
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           SlideTransition(
             position: _slideAnimation,
             child: BlueButton(
               topBottomPadding: 15,
               leftRightPadding: 20,
               widget_: Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Optional padding
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 decoration: BoxDecoration(
-                  // color: Colors.yellow, // Background color
-                  borderRadius: BorderRadius.circular(5), // Optional rounded corners
-              
+                  borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                  "Get Started",
+                  "Let's Explore",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: isDarkMode ? Colors.black : Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -91,13 +119,13 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
               OntapFunction: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUp1()),
+                  MaterialPageRoute(builder: (context) => const SignUp1()),
                 );
               },
               topBottomMargin: 0,
-              leftRightMargin: 20,
+              leftRightMargin: 20, onSelected: null,
             ),
-          ), // <- This was missing a closing parenthesis
+          ),
         ],
       ),
     );

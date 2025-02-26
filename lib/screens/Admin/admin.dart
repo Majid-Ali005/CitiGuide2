@@ -1,19 +1,19 @@
-import 'dart:io';
+// import 'dart:io';
 import 'dart:typed_data';
-import 'dart:ui';
+// import 'dart:ui';
 import 'package:citi_guide/Constants/constants.dart';
-import 'package:citi_guide/screens/Cities/cities.dart';
-import 'package:citi_guide/screens/Dashboard/dashboard.dart';
-import 'package:citi_guide/screens/Login/login.dart';
-import 'package:citi_guide/screens/SearchScreen/searchScreen.dart';
-import 'package:citi_guide/screens/profile/profile.dart';
+// import 'package:citi_guide/screens/Cities/cities.dart';
+// import 'package:citi_guide/screens/Dashboard/dashboard.dart';
+// import 'package:citi_guide/screens/Login/login.dart';
+// import 'package:citi_guide/screens/SearchScreen/searchScreen.dart';
+// import 'package:citi_guide/screens/profile/profile.dart';
 import 'package:citi_guide/widgets/blueButton.dart';
 import 'package:citi_guide/widgets/greyButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+// import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminScreen extends StatefulWidget {
@@ -105,19 +105,18 @@ class _AdminScreenState extends State<AdminScreen> {
   Future<String> uploadImageToStorage(String childName, Uint8List file) async {
     Reference ref = _storage.ref().child(childName);
     UploadTask uploadTask = ref.putData(file);
-    print("data saved");
+    // print("data saved");
     TaskSnapshot snapshot = await uploadTask;
     String downloadUrl = await snapshot.ref.getDownloadURL();
     return downloadUrl;
   }
 
   pickImage(ImageSource source) async {
-    final ImagePicker _imagePicker = ImagePicker();
-    XFile? _file = await _imagePicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
+    final ImagePicker imagePicker = ImagePicker();
+    XFile? file = await imagePicker.pickImage(source: source);
+    if (file != null) {
+      return await file.readAsBytes();
     }
-    print("No image is selected");
   }
 
   Uint8List? _image;
@@ -166,13 +165,13 @@ class _AdminScreenState extends State<AdminScreen> {
   // }
 
   //TextField Controllers
-  final TextEditingController city = new TextEditingController();
-  final TextEditingController location = new TextEditingController();
-  final TextEditingController timings = new TextEditingController();
-  final TextEditingController distance = new TextEditingController();
-  final TextEditingController description = new TextEditingController();
-  final TextEditingController contact = new TextEditingController();
-  final TextEditingController locationName = new TextEditingController();
+  final TextEditingController city = TextEditingController();
+  final TextEditingController location = TextEditingController();
+  final TextEditingController timings = TextEditingController();
+  final TextEditingController distance = TextEditingController();
+  final TextEditingController description =  TextEditingController();
+  final TextEditingController contact =  TextEditingController();
+  final TextEditingController locationName =  TextEditingController();
   int selectedIndex = 3;
 
   @override
@@ -184,7 +183,7 @@ class _AdminScreenState extends State<AdminScreen> {
           //profile design
           Stack(
             children: [
-              Container(
+              SizedBox(
                   width: double.infinity,
                   child: Image.asset(
                     'assets/images/profileScreenAbove.png',
@@ -308,13 +307,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -374,13 +373,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -438,13 +437,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -504,13 +503,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -567,13 +566,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -632,13 +631,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -741,13 +740,13 @@ class _AdminScreenState extends State<AdminScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the error border color
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Colors
                                     .red), // Customize the focused error border color
                             borderRadius: BorderRadius.circular(30.0),
@@ -796,7 +795,7 @@ class _AdminScreenState extends State<AdminScreen> {
                             //         builder: (context) => const SignOutScreen()));
                           }},
                           topBottomMargin: 20,
-                          leftRightMargin: 90),
+                          leftRightMargin: 90, onSelected: null,),
                       //                _image != null
                       // ? Image.memory(_image!)
                       // :  Container(child: Text("nhi hua")),

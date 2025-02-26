@@ -95,7 +95,7 @@ class _CityDestinationsState extends State<CityDestinations> {
                                     children: [
                                       Padding(
                                         padding:
-                                            EdgeInsets.only(top: 6, left: 10),
+                                            const EdgeInsets.only(top: 6, left: 10),
                                         child: TransparentButton(
                                             OpacitySet: 0.1,
                                             topBottomPadding: 2,
@@ -168,7 +168,7 @@ class _CityDestinationsState extends State<CityDestinations> {
                                   cityImg: url,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               )
                             ],

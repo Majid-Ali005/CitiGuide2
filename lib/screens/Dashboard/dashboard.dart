@@ -4,7 +4,9 @@ import 'package:citi_guide/Constants/constants.dart';
 import 'package:citi_guide/screens/Cities/cities.dart';
 import 'package:citi_guide/screens/Details/details.dart';
 import 'package:citi_guide/screens/SearchScreen/searchScreen.dart';
+import 'package:citi_guide/screens/SignOut/signOut.dart';
 import 'package:citi_guide/screens/profile/profile.dart';
+import 'package:citi_guide/slider_screen.dart';
 import 'package:citi_guide/widgets/blueButton.dart';
 import 'package:citi_guide/widgets/card.dart';
 import 'package:citi_guide/widgets/destinationCards.dart';
@@ -14,6 +16,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+//this is for carousel
+  final List<String> imageUrls = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReJvMyLzuWbkwTuh7NB_deC8X0sUqwrQdALA&s",
+    "https://static.vecteezy.com/system/resources/thumbnails/023/929/823/small_2x/world-finally-in-peace-illustration-generative-ai-photo.jpg",
+    "https://wallpapers.com/images/hd/travel-hd-4zjwrepl0mzn70nd.jpg",
+  ];
+//ye variable drop down list k liye hy.
+
 
 class Dashboard extends StatefulWidget {
   final String userId;
@@ -28,6 +40,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int selectedIndex = 0;
+  
 
 
 
@@ -65,7 +78,7 @@ class _DashboardState extends State<Dashboard> {
           firstOpacityDivRow: Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
                 child: Text(
                   data?['locationName'] ?? 'Unknown Location',
                   style: TextStyle(
@@ -147,17 +160,17 @@ class _DashboardState extends State<Dashboard> {
       //Navigation Bar
 
       body: Container(
-        margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+         margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
         child: ListView(children: [
           const SizedBox(height: 30),
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(19)),
-                  border: Border.all(
-                    color: Constants.greyColor,
+                 padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(19)),
+              border: Border.all(
+                color: Constants.greyColor, 
                   ),
                 ),
                 margin: const EdgeInsets.only(right: 20, bottom: 5, top: 5),
@@ -165,7 +178,7 @@ class _DashboardState extends State<Dashboard> {
                   child: CircleAvatar(
                     radius: 26,
                     child: Image(
-                      image: NetworkImage(widget.profile),
+                      image: NetworkImage(widget.username),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -175,19 +188,87 @@ class _DashboardState extends State<Dashboard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    "Welcom To Majid Citi Guider App",
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                  ),
                   Text(
                     widget.username,
                     style: const TextStyle(fontWeight: FontWeight.w400),
                     textAlign: TextAlign.left,
                   ),
-                  const Text(
-                    "Welcom To Majid Citi Guider App",
-                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-                  )
+                  
+                 
                 ],
+                
               )
+              
+            ],
+            
+          ),
+
+        
+          //this is the drop down list
+          
+          Row(
+            
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // Text("this is for drop down text"),
+            DropdownMenu<Color>(
+               width: 150,
+  hintText: "Profile",
+  leadingIcon: Icon(Icons.person, color: Colors.black), // Icon on the left
+  menuStyle: MenuStyle(
+    backgroundColor: MaterialStateProperty.all(Colors.transparent), // Optional: Make menu transparent
+    elevation: MaterialStateProperty.all(0), // Removes shadow
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: InputBorder.none, // ✅ Removes the outline
+    enabledBorder: InputBorder.none, // ✅ Removes enabled border
+    focusedBorder: InputBorder.none, // ✅ Removes focused border
+  ),
+  
+  onSelected: (Color? value) {
+    if (value == Colors.red) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfileScreen(
+            userId: widget.userId,
+            email: widget.email,
+            username: widget.username,
+            profile: widget.profile,
+          ),
+        ),
+      );
+    }
+    else if (value == Colors.green) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SignOutScreen(), // Navigate to Settings screen
+        ),
+      );
+    }
+  },
+  dropdownMenuEntries: <DropdownMenuEntry<Color>>[
+    DropdownMenuEntry(
+      value: Colors.red,
+      label: "Edit Profile",
+    ),
+    DropdownMenuEntry(
+      value: Colors.green,
+      label: "Sign Out",
+    ),
+    
+  ],
+)
+
+
             ],
           ),
+
 
           // searchbar row //
           Container(
@@ -218,8 +299,8 @@ class _DashboardState extends State<Dashboard> {
       ),
     ),
     filled: true,
-    fillColor: Constants.greyColor,
-    hintText: 'Search Destination',
+    helperText: "",
+    hintText: "Search Destination",
     prefixIcon: Icon(
       Icons.search,
       color: Constants.greyTextColor,
@@ -241,22 +322,6 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(
                   width: 7,
                 ),
-                
-
-                BlueButton(
-                  topBottomPadding: Constants.searchBarButtonHeight,
-                  leftRightPadding: 10,
-                  widget_:
-                      Icon(Icons.storage_rounded, color: Constants.whiteColor),
-                  OntapFunction: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  SearchScreen(userId: widget.userId, email: widget.email, username: widget.username, profile: widget.profile)));
-                  },
-                  topBottomMargin: 0,
-                  leftRightMargin: 0,
-                ),
               ],
             ),
           ),
@@ -265,220 +330,208 @@ class _DashboardState extends State<Dashboard> {
             height: 7,
           ),
 
-          //City Categories row
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                BlueButton(
-                  topBottomPadding: 10,
-                  leftRightPadding: 30,
-                  widget_: const Text(
-                    "Karachi",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  OntapFunction: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const DestinationDetails()));
-                  },
-                  topBottomMargin: 0,
-                  leftRightMargin: 0,
-                ),
-                GreyButton(
-                  topBottomPadding: 10,
-                  leftRightPadding: 30,
-                  widget_: const Text(
-                    "Islamabad",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  OntapFunction: () {
-                    print("tapped");
-                  },
-                  topBottomMargin: 0,
-                  leftRightMargin: 5,
-                ),
-                GreyButton(
-                  topBottomPadding: 10,
-                  leftRightPadding: 30,
-                  widget_: const Text(
-                    "Lahore",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  OntapFunction: () {
-                    print("tapped");
-                  },
-                  topBottomMargin: 0,
-                  leftRightMargin: 5,
-                ),
-                GreyButton(
-                  topBottomPadding: 10,
-                  leftRightPadding: 30,
-                  widget_: const Text(
-                    "Multan",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  OntapFunction: () {
-                    print("tapped");
-                  },
-                  topBottomMargin: 0,
-                  leftRightMargin: 5,
-                ),
-              ],
+      //this is the carousle
+      Container(
+      child:CarouselSlider(
+        options: CarouselOptions(
+          height: 250, // Overall height of the card
+          autoPlay: true, // Enable autoplay
+          autoPlayCurve: Curves.easeInOut, // Autoplay animation curve
+          aspectRatio: 16 / 9, // Aspect Ratio
+          autoPlayAnimationDuration: const Duration(seconds: 2), // Slide duration
+          enlargeCenterPage: true, // Effect to enlarge the center image
+        ),
+        items: imageUrls.map((imageUrl) {
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(15), // Rounded corners
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.cover, // Cover the whole card
+              width: double.infinity,
             ),
+          );
+        }).toList(),
+      ),
+      ),
+
+       
+
+          
+Container(
+  padding: EdgeInsets.all(16.0),
+  child: Row(
+    children: [
+      
+      // Card 1
+      Expanded(
+        
+        child: Card(
+          
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
           ),
-
-          // Card(
-          //             clipBehavior: Clip.antiAliasWithSaveLayer,
-          //             color: Colors.grey,
-          //             elevation: 4,
-          //             shape: RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(20),
-          //             ),
-          //             child: Stack(
-          //               children: [
-          //                 ClipRRect(
-          //                   borderRadius: BorderRadius.circular(8),
-          //                   child: Image.network(
-          //                     'https://picsum.photos/seed/127/600',
-          //                     width: 200,
-          //                     height: 200,
-          //                     fit: BoxFit.cover,
-          //                   ),
-          //                 ),
-          //                 Opacity(
-          //                   opacity: 0.8,
-          //                   child: Align(
-          //                     alignment: Alignment.bottomCenter,
-          //                     child: Container(
-          //                       width: 200,
-          //                       height: 109,
-          //                       decoration: BoxDecoration(
-          //                         color: Colors.white,
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //               ],
-          //             ),
-          //           ),
-
-          const SizedBox(
-            height: 7,
-          ),
-
-          //Destination cards
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child:
-                // StreamBuilder(
-                //   stream: FirebaseFirestore.instance
-                //       .collection('destinationDetails')
-                //       .snapshots(),
-                //   builder: (context, snapshot) {
-                //     if (!snapshot.hasData) {
-                //       return CircularProgressIndicator(); // Display loading indicator while data is being fetched
-                //     }
-                //     var destinationData = snapshot.data?.docs ?? [];
-                //     return ListView.builder(
-                //         shrinkWrap: true,
-                //         physics: NeverScrollableScrollPhysics(),
-                //         itemCount: destinationData.length,
-                //         itemBuilder: (context, index) {
-                //           var data = destinationData[index].data();
-                //           return DestinationCards(
-                //               imgPath: 'assets/images/PC.png',
-                //               location: data['locationName'],
-                //               city: data['city'],
-                //               distance: data['distance']);
-                //         });
-                //   },
-                // ),
-                StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection('destinationDetails')
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Text(" ");
-                }
-
-                var destinationData = snapshot.data?.docs ?? [];
-
-                // Asynchronous function to fetch URLs
-                Future<List<Widget>> fetchUrls() async {
-                  return Future.wait(destinationData.map((doc) async {
-                    final ref = FirebaseStorage.instance
-                        .ref()
-                        .child('locations/${doc.id}');
-                    var url = await ref.getDownloadURL();
-                    var data = doc.data();
-                    String dID = doc.id;
-                    print("Image URL: $url");
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                     DestinationDetails(destinationID: dID,url: url,)));
-                      },
-                      child: DestinationCards(
-                        imgPath: '$url',
-                        location: data['locationName'],
-                        city: data['city'],
-                        distance: data['distance'],
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15.0),
+                  topRight: Radius.circular(15.0),
+                ),
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Nature',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
-                    );
-                  }).toList());
-                }
-
-                // Use FutureBuilder to handle the asynchronous operation
-                return FutureBuilder<List<Widget>>(
-                  future: fetchUrls(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text(" ");
-                    }
-
-                    if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    }
-
-                    // Display the cards once the data is available
-                    List<Widget> destinationCards = snapshot.data!;
-                    return Row(
-                      children: destinationCards,
-                    );
-                  },
-                );
-              },
-            ),
-
-            // DestinationCards(
-            //     imgPath: 'assets/images/clockTower.png',
-            //     location: 'Clock Tower',
-            //     city: 'Karachi',
-            //     distance: '6.2 Km'),
-            // DestinationCards(
-            //     imgPath: 'assets/images/superSpace.png',
-            //     location: 'Super Space',
-            //     city: 'Karachi',
-            //     distance: '3.2 Km'),
-            // DestinationCards(
-            //     imgPath: 'assets/images/PC.png',
-            //     location: 'PC Hotel',
-            //     city: 'Karachi',
-            //     distance: '3.2 Km'),
+                    ),
+                    
+                    SizedBox(height: 8),
+                    Text(
+                      'Experience the beauty of nature.',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            
+            ],
           ),
+          
+        ),
+      ),
+      SizedBox(width: 16), // Spacing between cards
+      // Card 2
+      Expanded(
+        child: Card(
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15.0),
+                  topRight: Radius.circular(15.0),
+                ),
+                child: Image.network(
+                  'https://i.ytimg.com/vi/8txXRzBWzI0/maxresdefault.jpg',
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Cityscape',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Explore the vibrant city life.',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        
+      ),
+    ],
 
+    
+  ),
+),
+
+//four cards
+
+
+//one card
+
+Container(
+  padding: EdgeInsets.all(16.0),
+  child: Card(
+    elevation: 5.0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15.0),
+            topRight: Radius.circular(15.0),
+          ),
+          child: Image.network(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
+            height: 150,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Nature',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Experience the beauty of nature.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
+//two card with ontape
 
 
           Column(
             children: [
               FutureBuilder<List<Widget>>(
-        future: fetchPC(),
+       
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -489,13 +542,13 @@ class _DashboardState extends State<Dashboard> {
           }
 
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No data available'));
+            return const Center(child: Text(''));
           }
 
           return Column(
             children: snapshot.data!,
           );
-        },
+        }, future: null,
       ),
             ],
           )
@@ -512,7 +565,7 @@ class _DashboardState extends State<Dashboard> {
             width: 1.0, // Set your border width
           ),
           color: Constants.whiteColor,
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 25)],
+          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 25)],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -549,9 +602,9 @@ class _DashboardState extends State<Dashboard> {
             },
             tabBackgroundColor: Constants.OrangeColor,
             gap: 8,
-            padding: EdgeInsets.all(11),
+            padding: const EdgeInsets.all(11),
             tabs: const [
-              GButton(icon: Icons.home, text: "Home"),
+              GButton(icon: Icons.home, text: "Home 22"),
               GButton(icon: Icons.language, text: "Cities"),
               GButton(icon: Icons.search, text: "Search"),
               GButton(

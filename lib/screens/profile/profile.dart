@@ -50,6 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!isPwdValid) {
       return 'Password must be of 8 characters\n including digits and alphabets';
     }
+    return null;
   }
 
   //Login Successful msg
@@ -69,9 +70,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   //TextField Controllers
-  final TextEditingController usernameController = new TextEditingController();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController pwdController = new TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController pwdController = TextEditingController();
   //Edit data function
   Future<void> updateUserData(
       String userId, String newEmail, String newUsername) async {
@@ -129,10 +130,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   pickImage(ImageSource source) async {
-    final ImagePicker _imagePicker = ImagePicker();
-    XFile? _file = await _imagePicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
+    final ImagePicker imagePicker = ImagePicker();
+    XFile? file = await imagePicker.pickImage(source: source);
+    if (file != null) {
+      return await file.readAsBytes();
     }
     print("No image is selected");
   }
@@ -153,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           //profile design
           Stack(
             children: [
-              Container(
+              SizedBox(
                   width: double.infinity,
                   child: Image.asset(
                     'assets/images/profileScreenAbove.png',
@@ -187,6 +188,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Positioned(
+                      left: 120,
                       child: IconButton(
                           onPressed: () {
                             selectImage();
@@ -195,7 +197,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Icons.edit_square,
                             color: Constants.greyTextColor,
                           )),
-                      left: 120,
                     )
                   ]),
                 ),
@@ -218,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Text(
                             widget.username,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.w900,
@@ -445,8 +446,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                  Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => FetchData()));
-                              },child: Row(
+                                            builder: (context) => const FetchData()));
+                              },child: const Row(
                                 children: [SizedBox(height: 5,),
                                   Text(
                                     "Added Locations",
@@ -468,7 +469,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 username: widget.username,
                                                 profile: widget.profile)));
                                   },
-                                  child: Row(
+                                  child: const Row(
                                     children: [
                                       Text(
                                         "Add A New Place !",
@@ -483,7 +484,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                             ],
                           )
-                          : SizedBox(height: 1),
+                          : const SizedBox(height: 1),
 
                       BlueButton(
                           topBottomPadding: 10,
@@ -522,9 +523,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             }
                           },
                           topBottomMargin: 20,
-                          leftRightMargin: 90),
+                          leftRightMargin: 90, onSelected: null,),
                           Row(children: [
-                            Spacer(),
+                            const Spacer(),
                             BlueButton(topBottomPadding: 10, leftRightPadding: 10, widget_: Icon(Icons.arrow_forward,color: Constants.whiteColor,), OntapFunction:(){
                              Navigator.push(
                                 context,
@@ -532,7 +533,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     builder: (context) =>
                                         const SignOutScreen()),
                               ); 
-                            } , topBottomMargin: 20, leftRightMargin: 20)
+                            } , topBottomMargin: 20, leftRightMargin: 20, onSelected: null,)
                           ],)
                     ],
                   ),
@@ -553,7 +554,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: 1.0, // Set your border width
           ),
           color: Constants.whiteColor,
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 25)],
+          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 25)],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -608,7 +609,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
             tabBackgroundColor: Constants.OrangeColor,
             gap: 8,
-            padding: EdgeInsets.all(11),
+            padding: const EdgeInsets.all(11),
             tabs: const [
               GButton(icon: Icons.home, text: "Home"),
               GButton(icon: Icons.language, text: "Cities"),

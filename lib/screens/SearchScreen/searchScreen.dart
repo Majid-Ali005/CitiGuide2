@@ -30,7 +30,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchController = TextEditingController();
- StreamController<List<Widget>> _streamController =
+ final StreamController<List<Widget>> _streamController =
       StreamController<List<Widget>>.broadcast();
 
   @override
@@ -165,7 +165,7 @@ void _performSearch() async {
                         print("tapped");
                       },
                       topBottomMargin: 0,
-                      leftRightMargin: 0,
+                      leftRightMargin: 0, onSelected: null,
                     ),
                   ],
                 ),
@@ -262,7 +262,7 @@ StreamBuilder<List<Widget>>(
             width: 1.0, // Set your border width
           ),
           color: Constants.whiteColor,
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 25)],
+          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 25)],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
