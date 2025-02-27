@@ -15,9 +15,9 @@ class Constants {
         Color(0xFFFFFF00),
         Color(0xFFFFFF00),
       ]);
-  static Color OrangeColor = const Color(0xffE54000);
+  static Color OrangeColor = const Color(0xFFFFFF00);
 
-  static Color whiteColor = Colors.white;
+  static Color whiteColor = Colors.black;
   static Color lightBlueColor = const Color(0xffF0F3FB);
   static Color splashScreenPageColor = const Color(0xffD6D4A7);
   static String appLogo = 'assets/images/citiGuideIcon.png';

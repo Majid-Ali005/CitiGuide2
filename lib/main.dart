@@ -33,8 +33,8 @@ class CitiGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: firstSplashScreen(),
-      // home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
-      home: CityListScreen(),
+      home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      // home: CityListScreen(),
       // home: AdminScreen(userId: "1", email: "ali@gmail.com", username: "abc", profile: "abc"),
       // home: MapScreen(),
       // home: SliderScreen(),
