@@ -1,5 +1,6 @@
 import 'package:citi_guide/api_gogole.dart';
 import 'package:citi_guide/screens/Admin/admin.dart';
+import 'package:citi_guide/screens/Admin/admin_dashboard.dart';
 import 'package:citi_guide/screens/Admin/fetchData.dart';
 import 'package:citi_guide/screens/Cities/cities.dart';
 import 'package:citi_guide/screens/CityDestinations/cityDestinations.dart';
@@ -33,7 +34,8 @@ class CitiGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: firstSplashScreen(),
-      home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      // home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      home: AdminDashboard(),
       // home: AdminScreen(userId: "ali", email: "ali", username: "ali", profile: "abc"),
       // home: CityListScreen(),
       // home: AdminScreen(userId: "1", email: "ali@gmail.com", username: "abc", profile: "abc"),
