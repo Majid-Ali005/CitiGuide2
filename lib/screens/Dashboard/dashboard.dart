@@ -150,47 +150,7 @@ class _DashboardState extends State<Dashboard> {
         child: ListView(children: [
           const SizedBox(height: 30),
           Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(19)),
-                  border: Border.all(
-                    color: Constants.greyColor,
-                  ),
-                ),
-                margin: const EdgeInsets.only(right: 20, bottom: 5, top: 5),
-                child: ClipOval(
-                  child: CircleAvatar(
-                    radius: 26,
-                    child: Image(
-                      image: NetworkImage(widget.username),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Welcome To Majid Citi Guider App",
-                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-                  ),
-                  Text(
-                    widget.username,
-                    style: const TextStyle(fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          // This is the drop down list
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               DropdownMenu<Color>(
                 width: 150,
@@ -240,6 +200,41 @@ class _DashboardState extends State<Dashboard> {
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(19)),
+                  border: Border.all(
+                    color: Constants.greyColor,
+                  ),
+                ),
+                margin: const EdgeInsets.only(right: 20, bottom: 5, top: 5),
+              
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  
+                  const Text(
+                    "Welcome To Majid Citi Guider App",
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                  ),
+                  // Text(
+                  //   widget.username,
+                  //   style: const TextStyle(fontWeight: FontWeight.w400),
+                  //   textAlign: TextAlign.left,
+                  // ),
+                ],
+              ),
+            ],
+          ),
+
+          // This is the drop down list
+          
 
           // Searchbar row
           Container(
@@ -300,6 +295,108 @@ class _DashboardState extends State<Dashboard> {
             height: 7,
           ),
 
+          //header nav bar hy ye
+           Row(
+  mainAxisSize: MainAxisSize.min,
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Hotel",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+        ),
+      ],
+    ),
+    SizedBox(width: 30), // Add some spacing between the two columns
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Restaurant",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+        ),
+      ],
+    ),
+    SizedBox(width: 30),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Events",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+        ),
+      ],
+    ),
+    SizedBox(width: 30),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Popular Cities",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+        ),
+      ],
+    ),
+    SizedBox(width: 30),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Bus Stops",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+        ),
+      ],
+    ),
+  ],
+),
+
           // This is the carousel
           Container(
             child: CarouselSlider(
@@ -323,193 +420,250 @@ class _DashboardState extends State<Dashboard> {
               }).toList(),
             ),
           ),
-
+// two cards
           Container(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
+  padding: EdgeInsets.all(16.0),
+  child: Row(
+    children: [
+      // Card 1
+      Expanded(
+        child: GestureDetector(
+          onTap: () {
+            // Define dID and url here or fetch them
+            String dID = "your_destination_id";
+            String url = "your_image_url";
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DestinationDetails(
+                  destinationID: dID, // Pass your destination ID for Card 1
+                  url: url, // Pass your URL for Card 1
+                ),
+              ),
+            );
+          },
+          child: Card(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Column(
               children: [
-                // Card 1
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Define dID and url here or fetch them
-                      String dID = "your_destination_id";
-                      String url = "your_image_url";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DestinationDetails(
-                            destinationID: dID, // Pass your destination ID for Card 1
-                            url: url, // Pass your URL for Card 1
-                          ),
-                        ),
-                      );
-                    },
-                    child: Card(
-                      elevation: 5.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15.0),
-                              topRight: Radius.circular(15.0),
-                            ),
-                            child: Image.network(
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
-                              height: 150,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nature',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Experience the beauty of nature.',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0),
+                  ),
+                  child: Image.network(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
+                    height: 150,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(width: 16), // Spacing between cards
-                // Card 2
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Define dID and url here or fetch them
-                      String dID = "your_destination_id";
-                      String url = "your_image_url";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DestinationDetails(
-                            destinationID: dID, // Pass your destination ID for Card 2
-                            url: url, // Pass your URL for Card 2
-                          ),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Nature',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
-                      );
-                    },
-                    child: Card(
-                      elevation: 5.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
                       ),
-                      child: Column(
+                      SizedBox(height: 8),
+                      Text(
+                        'Experience the beauty of nature.',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      // Star Rating Icons
+                      Row(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15.0),
-                              topRight: Radius.circular(15.0),
-                            ),
-                            child: Image.network(
-                              'https://i.ytimg.com/vi/8txXRzBWzI0/maxresdefault.jpg',
-                              height: 150,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Cityscape',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Explore the vibrant city life.',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                              ],
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star_half, color: Colors.amber, size: 16),
+                          SizedBox(width: 4),
+                          Text(
+                            '4.5',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
                             ),
                           ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-
-          // One card
-          Container(
-            padding: EdgeInsets.all(16.0),
-            child: Card(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+        ),
+      ),
+      SizedBox(width: 16), // Spacing between cards
+      // Card 2
+      Expanded(
+        child: GestureDetector(
+          onTap: () {
+            // Define dID and url here or fetch them
+            String dID = "your_destination_id";
+            String url = "your_image_url";
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DestinationDetails(
+                  destinationID: dID, // Pass your destination ID for Card 2
+                  url: url, // Pass your URL for Card 2
+                ),
               ),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0),
-                    ),
-                    child: Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
-                      height: 150,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+            );
+          },
+          child: Card(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Nature',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  child: Image.network(
+                    'https://i.ytimg.com/vi/8txXRzBWzI0/maxresdefault.jpg',
+                    height: 150,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Cityscape',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Experience the beauty of nature.',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
-                          ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Explore the vibrant city life.',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[600],
                         ),
-                      ],
+                      ),
+                      SizedBox(height: 8),
+                      // Star Rating Icons
+                      Row(
+                        children: [
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star, color: Colors.amber, size: 16),
+                          Icon(Icons.star_border, color: Colors.amber, size: 16),
+                          SizedBox(width: 4),
+                          Text(
+                            '4.0',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
+// One card
+Container(
+  padding: EdgeInsets.all(16.0),
+  child: Card(
+    elevation: 5.0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15.0),
+            topRight: Radius.circular(15.0),
+          ),
+          child: Image.network(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
+            height: 150,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Nature',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Experience the beauty of nature.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+              ),
+              SizedBox(height: 8),
+              // Star Rating Icons
+              Row(
+                children: [
+                  Icon(Icons.star, color: Colors.amber, size: 16),
+                  Icon(Icons.star, color: Colors.amber, size: 16),
+                  Icon(Icons.star, color: Colors.amber, size: 16),
+                  Icon(Icons.star, color: Colors.amber, size: 16),
+                  Icon(Icons.star, color: Colors.amber, size: 16),
+                  SizedBox(width: 4),
+                  Text(
+                    '5.0',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
                     ),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
+        ),
+      ],
+    ),
+  ),
+),
 
           // Two cards with onTap
           Column(

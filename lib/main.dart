@@ -34,6 +34,7 @@ class CitiGuide extends StatelessWidget {
     return MaterialApp(
       // home: firstSplashScreen(),
       home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      // home: AdminScreen(userId: "ali", email: "ali", username: "ali", profile: "abc"),
       // home: CityListScreen(),
       // home: AdminScreen(userId: "1", email: "ali@gmail.com", username: "abc", profile: "abc"),
       // home: MapScreen(),
