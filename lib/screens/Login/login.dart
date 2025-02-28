@@ -1,9 +1,7 @@
 import 'package:citi_guide/Constants/constants.dart';
-import 'package:citi_guide/screens/Admin/admin.dart';
 import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/SignUpPages/signUp2.dart';
 import 'package:citi_guide/screens/forgotPassword/forgotPwd.dart';
-import 'package:citi_guide/screens/profile/profile.dart';
 import 'package:citi_guide/widgets/blueButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -156,8 +154,8 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'myfonts',
-                    fontSize: 24,
-                    fontWeight: FontWeight.w900,
+                    fontSize: 40,
+                    // fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
@@ -170,8 +168,8 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'myfonts',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    // fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -212,8 +210,8 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'myfonts',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    // fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -291,7 +289,7 @@ class _LoginState extends State<Login> {
                 topBottomPadding: Constants.searchBarButtonHeight,
                 leftRightPadding: 10,
                 widget_: const Text(
-                  "Log in",
+                  "Log in ",
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'myfonts',

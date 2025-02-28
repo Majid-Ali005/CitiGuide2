@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:citi_guide/Constants/constants.dart';
-import 'package:citi_guide/screens/Admin/admin.dart';
-import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/Login/login.dart';
 import 'package:citi_guide/widgets/blueButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -114,12 +110,12 @@ class _SignUp2State extends State<SignUp2> {
                 margin: const EdgeInsets.symmetric(vertical: 20),
                 alignment: Alignment.center,
                 child: const Text(
-                  "Create account",
+                  "Create Account",
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'myfonts',
-                    fontSize: 24,
-                    fontWeight: FontWeight.w900,
+                    fontSize: 40,
+                    // fontWeight: FontWeight.w900,
                   ),
                 ),
               ),

@@ -1,5 +1,4 @@
 import 'package:citi_guide/Constants/constants.dart';
-import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/SignUpPages/signUp2.dart';
 import 'package:citi_guide/widgets/blueButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';

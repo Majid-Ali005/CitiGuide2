@@ -4,6 +4,8 @@ import '../models/city_model.dart';
 import '../widgets/city_card.dart';
 
 class CityListScreen extends StatelessWidget {
+  const CityListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

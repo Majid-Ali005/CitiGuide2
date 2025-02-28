@@ -22,7 +22,8 @@ class _SignUp1State extends State<SignUp1> {
                 borderRadius: BorderRadius.circular(19),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-                  color: Constants.lightBlueColor,
+                  // color: Constants.lightBlueColor,
+                  color: Colors.white,
                   child: Column(
                     children: [
                       Container(
@@ -62,7 +63,7 @@ class _SignUp1State extends State<SignUp1> {
                             children: [
                               Image.asset(
                                 'assets/images/googleIcon.png',
-                                height: 20,
+                                height: 25,
                               ),
                               const SizedBox(
                                 width: 10,

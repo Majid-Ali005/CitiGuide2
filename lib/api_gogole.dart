@@ -11,6 +11,8 @@ import 'package:google_places_flutter/model/prediction.dart' hide Prediction;
 const String GOOGLE_MAPS_API_KEY = "AIzaSyBGq4gmZXERfn7DPa_k00w18sN4YNUj6Ts";
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
   _MapScreenState createState() => _MapScreenState();
 }

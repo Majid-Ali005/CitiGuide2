@@ -356,7 +356,7 @@ class DestinationDetails extends StatelessWidget {
                           return ReviewItem(
                             comment: review['comment'],
                             rating: review['rating'],
-                            likes: review['likes'],
+                            likes: review['likes'] + 1,
                           );
                         },
                       );
@@ -379,7 +379,7 @@ class ReviewItem extends StatelessWidget {
   final double rating;
   final int likes;
 
-  const ReviewItem({
+  const ReviewItem({super.key, 
     required this.comment,
     required this.rating,
     required this.likes,
@@ -430,7 +430,7 @@ class ReviewItem extends StatelessWidget {
 class AddReviewSection extends StatefulWidget {
   final String destinationID;
 
-  const AddReviewSection({required this.destinationID});
+  const AddReviewSection({super.key, required this.destinationID});
 
   @override
   _AddReviewSectionState createState() => _AddReviewSectionState();

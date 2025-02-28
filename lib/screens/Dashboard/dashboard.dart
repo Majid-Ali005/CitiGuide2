@@ -1,4 +1,9 @@
 import 'package:citi_guide/Constants/constants.dart';
+
+import 'package:citi_guide/Header_Nav/Detialss.dart';
+import 'package:citi_guide/Header_Nav/Eventss.dart';
+import 'package:citi_guide/Header_Nav/Popular_Cities.dart';
+import 'package:citi_guide/Header_Nav/Restaurant.dart';
 import 'package:citi_guide/screens/Cities/cities.dart';
 import 'package:citi_guide/screens/Details/details.dart';
 import 'package:citi_guide/screens/SearchScreen/searchScreen.dart';
@@ -146,9 +151,9 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       // Navigation Bar
       body: Container(
-        margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20),
         child: ListView(children: [
-          const SizedBox(height: 30),
+          // const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -157,8 +162,8 @@ class _DashboardState extends State<Dashboard> {
                 hintText: "Profile",
                 leadingIcon: Icon(Icons.person, color: Colors.black), // Icon on the left
                 menuStyle: MenuStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.transparent), // Optional: Make menu transparent
-                  elevation: MaterialStateProperty.all(0), // Removes shadow
+                  backgroundColor: WidgetStateProperty.all(Colors.transparent), // Optional: Make menu transparent
+                  elevation: WidgetStateProperty.all(0), // Removes shadow
                 ),
                 inputDecorationTheme: InputDecorationTheme(
                   border: InputBorder.none, // ✅ Removes the outline
@@ -221,7 +226,7 @@ class _DashboardState extends State<Dashboard> {
                   
                   const Text(
                     "Welcome To Majid Citi Guider App",
-                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20, ),
                   ),
                   // Text(
                   //   widget.username,
@@ -300,100 +305,147 @@ class _DashboardState extends State<Dashboard> {
   mainAxisSize: MainAxisSize.min,
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
+   Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    InkWell(
+      onTap: () {
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) =>  PlaceList()),
+);
+        print("Hotel tapped!");
+      },
+      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      child: Card(
+        elevation: 5, // Add elevation here
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color:Color(0xFADA5EFF),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+          child: Icon(Icons.hotel, size: 30, color: Colors.white),
         ),
-        SizedBox(height: 5),
-        Text(
-          "Hotel",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
-        ),
-      ],
+      ),
     ),
+    SizedBox(height: 5),
+    Text(
+      "Hotel",
+      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+    ),
+  ],
+),
     SizedBox(width: 30), // Add some spacing between the two columns
     Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    InkWell(
+      onTap: () {
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => EventList()),
+);
+        print("Hotel tapped!");
+      },
+      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      child: Card(
+        elevation: 5, // Add elevation here
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color:Color(0xFADA5EFF),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+          child: Icon(Icons.event, size: 30, color: Colors.white),
         ),
-        SizedBox(height: 5),
-        Text(
-          "Restaurant",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
-        ),
-      ],
+      ),
     ),
+    SizedBox(height: 5),
+    Text(
+      "Events",
+      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+    ),
+  ],
+),
     SizedBox(width: 30),
     Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    InkWell(
+      onTap: () {
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => RestaurantList()),
+);
+        print("Hotel tapped!");
+      },
+      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      child: Card(
+        elevation: 5, // Add elevation here
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color:Color(0xFADA5EFF),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+          child: Icon(Icons.restaurant, size: 30, color: Colors.white),
         ),
-        SizedBox(height: 5),
-        Text(
-          "Events",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
-        ),
-      ],
+      ),
     ),
+    SizedBox(height: 5),
+    Text(
+      "Restaurants",
+      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+    ),
+  ],
+),
     SizedBox(width: 30),
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
+   Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    InkWell(
+      onTap: () {
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => PopularCitiesList()),
+);
+        print("Hotel tapped!");
+      },
+      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      child: Card(
+        elevation: 5, // Add elevation here
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color:Color(0xFADA5EFF),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
+          child: Icon(Icons.location_city, size: 30, color: Colors.white),
         ),
-        SizedBox(height: 5),
-        Text(
-          "Popular Cities",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
-        ),
-      ],
+      ),
     ),
-    SizedBox(width: 30),
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          padding: EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Icon(Icons.hotel, size: 30, color: Colors.black87),
-        ),
-        SizedBox(height: 5),
-        Text(
-          "Bus Stops",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
-        ),
-      ],
+    SizedBox(height: 5),
+    Text(
+      "Popular Cities",
+      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
     ),
+  ],
+),
+    
+    
   ],
 ),
 
@@ -401,7 +453,7 @@ class _DashboardState extends State<Dashboard> {
           Container(
             child: CarouselSlider(
               options: CarouselOptions(
-                height: 250, // Overall height of the card
+                height: 200, // Overall height of the card
                 autoPlay: true, // Enable autoplay
                 autoPlayCurve: Curves.easeInOut, // Autoplay animation curve
                 aspectRatio: 16 / 9, // Aspect Ratio
@@ -456,7 +508,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   child: Image.network(
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
-                    height: 150,
+                    height: 80,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -540,7 +592,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   child: Image.network(
                     'https://i.ytimg.com/vi/8txXRzBWzI0/maxresdefault.jpg',
-                    height: 150,
+                    height: 80,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -613,7 +665,7 @@ Container(
           ),
           child: Image.network(
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVIFMOOZUzJxTCrHU1-q3TM2egCkav4-rw&s',
-            height: 150,
+            height: 80,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
@@ -666,38 +718,15 @@ Container(
 ),
 
           // Two cards with onTap
-          Column(
-            children: [
-              FutureBuilder<List<Widget>>(
-                future: fetchPC(), // Add the future parameter
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-
-                  if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  }
-
-                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return const Center(child: Text(''));
-                  }
-
-                  return Column(
-                    children: snapshot.data!,
-                  );
-                },
-              ),
-            ],
-          ),
+         
         ]),
       ),
 
       // Navigation Bar
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+        margin: const EdgeInsets.only(bottom: 5, left: 20, right: 20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(0),
           border: Border.all(
             color: Constants.whiteColor, // Set your border color
             width: 1.0, // Set your border width
@@ -706,7 +735,7 @@ Container(
           boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 25)],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: GNav(
             backgroundColor: Constants.whiteColor,
             color: Constants.greyTextColor,

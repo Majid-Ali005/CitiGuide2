@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class ReviewScreen extends StatefulWidget {
+  const ReviewScreen({super.key});
+
   @override
   _ReviewScreenState createState() => _ReviewScreenState();
 }
@@ -97,7 +99,7 @@ class Review {
 class ReviewItem extends StatefulWidget {
   final Review review;
 
-  ReviewItem({required this.review});
+  const ReviewItem({super.key, required this.review});
 
   @override
   _ReviewItemState createState() => _ReviewItemState();

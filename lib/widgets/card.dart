@@ -60,7 +60,7 @@ class CityImgCard extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: Container(
-                      color: const Color.fromARGB(255, 134, 132, 132).withOpacity(0.4),
+                      color: Color.fromARGB(255, 134, 132, 132).withOpacity(0.4),
                       child: Column(
                         children: [
                           firstOpacityDivRow,

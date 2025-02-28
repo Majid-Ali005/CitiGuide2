@@ -11,14 +11,14 @@ class Constants {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: <Color>[
-        Color(0xFFFFFF00),
-        Color(0xFFFFFF00),
-        Color(0xFFFFFF00),
+        Color(0xFADA5EFF),
+        Color(0xFADA5EFF),
+        Color(0xFADA5EFF),
       ]);
-  static Color OrangeColor = const Color(0xFFFFFF00);
+  static Color OrangeColor = const Color(0xFADA5EFF);
 
-  static Color whiteColor = Colors.grey;
-  static Color lightBlueColor = const Color(0xffF0F3FB);
+  static Color whiteColor = const Color.fromARGB(255, 255, 255, 255);
+  static Color lightBlueColor = const Color.fromARGB(255, 255, 255, 255);
   static Color splashScreenPageColor = const Color(0xffD6D4A7);
   static String appLogo = 'assets/images/citiGuideIcon.png';
 }

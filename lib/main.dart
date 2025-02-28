@@ -1,20 +1,7 @@
-import 'package:citi_guide/api_gogole.dart';
-import 'package:citi_guide/screens/Admin/admin.dart';
-import 'package:citi_guide/screens/Admin/admin_dashboard.dart';
-import 'package:citi_guide/screens/Admin/fetchData.dart';
-import 'package:citi_guide/screens/Cities/cities.dart';
-import 'package:citi_guide/screens/CityDestinations/cityDestinations.dart';
+
 import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/Login/login.dart';
-import 'package:citi_guide/screens/SearchScreen/searchScreen.dart';
-import 'package:citi_guide/screens/SignUpPages/signUp1.dart';
 import 'package:citi_guide/screens/SignUpPages/signUp2.dart';
-import 'package:citi_guide/screens/SplashScreens/firstSplashScreen.dart';
-import 'package:citi_guide/screens/add_city_screen.dart';
-import 'package:citi_guide/screens/city_list_screen.dart';
-import 'package:citi_guide/screens/map/map_page.dart';
-import 'package:citi_guide/screens/profile/profile.dart';
-import 'package:citi_guide/slider_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -33,9 +20,11 @@ class CitiGuide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: firstSplashScreen(),
-      // home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
-      home: AdminDashboard(),
+       //home: firstSplashScreen(),
+       home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      // home: PlaceList(),
+      //home: Login(),
+      // home: AdminDashboard(),
       // home: AdminScreen(userId: "ali", email: "ali", username: "ali", profile: "abc"),
       // home: CityListScreen(),
       // home: AdminScreen(userId: "1", email: "ali@gmail.com", username: "abc", profile: "abc"),

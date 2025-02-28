@@ -30,7 +30,7 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
     // Create AnimationController
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 0),
     );
 
     // Create a curved animation
@@ -105,12 +105,12 @@ class _FifthSplashScreenState extends State<FifthSplashScreen>
               widget_: Container(
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   "Let's Explore",
                   style: TextStyle(
-                    color: isDarkMode ? Colors.black : Colors.black,
+                    color: isDarkMode ? Colors.white : Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),

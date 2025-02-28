@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class AddCityScreen extends StatefulWidget {
+  const AddCityScreen({super.key});
+
   @override
   _AddCityScreenState createState() => _AddCityScreenState();
 }
