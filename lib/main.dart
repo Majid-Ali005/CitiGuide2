@@ -1,4 +1,5 @@
 
+import 'package:citi_guide/screens/Admin/Admin_Login.dart';
 import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/Login/login.dart';
 import 'package:citi_guide/screens/SignUpPages/signUp2.dart';
@@ -21,7 +22,8 @@ class CitiGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
        //home: firstSplashScreen(),
-       home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      //  home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      home: LoginPage(),
       // home: PlaceList(),
       //home: Login(),
       // home: AdminDashboard(),
