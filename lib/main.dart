@@ -1,8 +1,10 @@
 
 import 'package:citi_guide/screens/Admin/Admin_Login.dart';
+import 'package:citi_guide/screens/Admin/admin_dashboard.dart';
 import 'package:citi_guide/screens/Dashboard/dashboard.dart';
 import 'package:citi_guide/screens/Login/login.dart';
 import 'package:citi_guide/screens/SignUpPages/signUp2.dart';
+import 'package:citi_guide/screens/SplashScreens/firstSplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -21,11 +23,11 @@ class CitiGuide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       //home: firstSplashScreen(),
-      //  home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
-      home: LoginPage(),
+      //  home: firstSplashScreen(),
+       home: const Dashboard(userId: "1", email: "ali@gmail.com", username: "ali", profile: "no"),
+      // home: LoginPage(),
       // home: PlaceList(),
-      //home: Login(),
+      // home: Login(),
       // home: AdminDashboard(),
       // home: AdminScreen(userId: "ali", email: "ali", username: "ali", profile: "abc"),
       // home: CityListScreen(),

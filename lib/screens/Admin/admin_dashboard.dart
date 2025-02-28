@@ -9,7 +9,7 @@ class AdminDashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         
-        title: Center(child: const Text('Admin Dashboard', style: TextStyle(fontSize: 50, fontWeight:FontWeight.bold),)),
+        title: Center(child: const Text('Admin Dashboard', style: TextStyle(fontSize: 35, fontWeight:FontWeight.bold),)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

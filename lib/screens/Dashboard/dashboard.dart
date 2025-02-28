@@ -316,9 +316,9 @@ class _DashboardState extends State<Dashboard> {
 );
         print("Hotel tapped!");
       },
-      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      borderRadius: BorderRadius.circular(10), 
       child: Card(
-        elevation: 5, // Add elevation here
+        elevation: 5, 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -339,7 +339,7 @@ class _DashboardState extends State<Dashboard> {
     ),
   ],
 ),
-    SizedBox(width: 30), // Add some spacing between the two columns
+    SizedBox(width: 30), 
     Column(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -351,9 +351,9 @@ class _DashboardState extends State<Dashboard> {
 );
         print("Hotel tapped!");
       },
-      borderRadius: BorderRadius.circular(10), // Match the container's border radius
+      borderRadius: BorderRadius.circular(10), 
       child: Card(
-        elevation: 5, // Add elevation here
+        elevation: 5, 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -474,9 +474,12 @@ class _DashboardState extends State<Dashboard> {
           ),
 // two cards
           Container(
+            
   padding: EdgeInsets.all(16.0),
   child: Row(
+    
     children: [
+    
       // Card 1
       Expanded(
         child: GestureDetector(

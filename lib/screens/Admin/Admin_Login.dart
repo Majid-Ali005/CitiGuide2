@@ -9,32 +9,30 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Form key for validation
+  
   final _formKey = GlobalKey<FormState>();
 
-  // Controllers for email and password fields
+  
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Hardcoded admin credentials
   final String _adminEmail = "AdminMajid@gmail.com";
   final String _adminPassword = "Majid1234";
 
-  // Function to handle login
   void _login() {
     if (_formKey.currentState!.validate()) {
       String email = _emailController.text.trim();
       String password = _passwordController.text.trim();
 
-      // Check if credentials match
+      
       if (email == _adminEmail && password == _adminPassword) {
-        // Navigate to the admin dashboard or home page
+        
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => AdminDashboard()),
         );
       } else {
-        // Show error message if credentials are incorrect
+        
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Invalid email or password")),
         );

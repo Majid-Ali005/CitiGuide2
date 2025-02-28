@@ -16,9 +16,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  //Validation
+ 
   final _formKey = GlobalKey<FormState>();
-  //Email validation
+  
   String? validateEmail(String? email) {
     RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     final isEmailValid = emailRegex.hasMatch(email ?? '');
@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
     return null;
   }
 
-  //Password validation
+  
   String? validatePwd(String? pwd) {
     RegExp passwordRegex = RegExp(r'^(?=.*[a-zA-Z])(?=.*\d).{8,}$');
     final isPwdValid = passwordRegex.hasMatch(pwd ?? '');
@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
     return null;
   }
 
-  //Error validating
+  
   void showErrorMessage(String errorToShow) {
     final snackBar = SnackBar(
       content: Text(errorToShow),
